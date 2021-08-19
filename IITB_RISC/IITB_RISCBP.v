@@ -36,6 +36,7 @@ module IITB_RISCBP (clk1, rst);
 	reg EX_MEM_carry,MEM_WB_carry,WB_carry,WB_zero,carry; 
 	reg [3:0] MRU,INDEX,pos;
 	reg found;
+	//Parameters for instruction decode
 	parameter 	RR_ALU=4'b0000, RI_ALU_A=4'b0001, RI_ALU_L=4'b0010, RI_L=4'b0011,RI_S=4'b0100, LM_T=4'b0101,
 				SM_T=4'b0110, BRANCH=4'b0111, JUMP=4'b1000;					//Instruction types
 				
@@ -48,15 +49,20 @@ module IITB_RISCBP (clk1, rst);
 	
 	reg ID_RR_TAKEN_BRANCH,RR_EX_TAKEN_BRANCH,EX_MEM_TAKEN_BRANCH,MEM_WB_TAKEN_BRANCH,IF_ID_TAKEN_BRANCH,WB_TAKEN_BRANCH;
 	integer i;
+	
+	
 	initial
 	begin
 		for(i=0;i<16;i=i+1) //initialize the BHT with all taken branches
 		begin
 			BHT[i][0]={16'd0,1'b1};
 		end
+		
 		MRU=0;
 		INDEX=0;
 		found=0;
+		
+		//initialization of Registers
 		Reg[0]=16'h0000;
 		Reg[1]=16'h0001;
 		Reg[2]=16'h0002;
@@ -69,6 +75,7 @@ module IITB_RISCBP (clk1, rst);
 		PC=16'hffff;
 		NPC=16'h0000;
 		
+		//Initialization of data memory
 		dMem[0]=16'b0000_0000_0000_0000;
 		dMem[1]=16'b0000_0000_0000_0001;		 
 		dMem[2]=16'b0000_0000_0000_0010;
@@ -80,9 +87,11 @@ module IITB_RISCBP (clk1, rst);
 		dMem[8]=16'b0000_0000_0000_1000;
 		dMem[9]=16'b0000_0000_0000_1001;
 		
-		//iMem[0]=16'b0000_000_001_010_000;  	//ADD R0+R1 store in R2							//Works
-		//iMem[1]=16'b0000_000_001_011_010;		//ADC R1+R0 store in R3 if carry flag is set	//works
-		//iMem[2]=16'b0000_000_001_011_001;		//ADZ R0+R1 store in R2	if zero flag is set		//works
+		
+		//Initialization of Instruction memory
+		iMem[0]=16'b0000_000_001_010_000;  	//ADD R0+R1 store in R2							//Works
+		iMem[1]=16'b0000_000_001_011_010;		//ADC R1+R0 store in R3 if carry flag is set	//works
+		iMem[2]=16'b0000_000_001_011_001;		//ADZ R0+R1 store in R2	if zero flag is set		//works
 		//iMem[3]=16'b0001_000_010_000111;		//Add 7 to contents of R0 and store in reg 2	//Works
 		//iMem[3]=16'b0010_000_001_011_000;		//NAND R1+R0 store in R2 						//Works
 		//iMem[1]=16'b0010_000_001_011_010;		//NAND R1+R0 store in R3 if carry flag is set 	//Works
@@ -94,6 +103,7 @@ module IITB_RISCBP (clk1, rst);
 		//iMem[0]=16'b1001_010_101_000000;		//JLR Store PC+1 in R2 and PC=R3(3)				//Works with 3 delays
 		//iMem[1]=16'b0001_000_001_000111;		//Add 7 to contents of R0 and store in reg 1
 		//iMem[0]=16'b1100_001_010_000111;		//BEQ if contents of R1 and R2 are equal then PC=PC+7	//Works
+		//works
 		
 		//Data hazard code
 		// 		    op 	 RA  RB  RC 
@@ -166,18 +176,18 @@ module IITB_RISCBP (clk1, rst);
 		//NOP instruction
 		// 16'b1111_0000_0000_0000;
 		
-		iMem[0]=16'b1100_001_010_000111;
-		iMem[1]=16'b0000_000_001_010_000;	//R2=R0+R1
-		iMem[2]=16'b0000_010_001_011_000;	//R3=R2+R1
-		iMem[3]=16'b0000_000_001_010_000;	//R2=R0+R1
-		iMem[4]=16'b0000_000_001_010_000;	//R2=R0+R1
-		iMem[5]=16'b0000_000_001_010_000;	//R2=R0+R1
-		iMem[6]=16'b0000_000_001_010_000;	//R2=R0+R1
-		iMem[7]=16'b0000_000_001_010_000;	//R2=R0+R1
-		iMem[8]=16'b0000_011_001_100_000;	//R4=R3+R1
-		iMem[9]=16'b0000_011_001_100_000;	//R4=R3+R1
-		iMem[10]=16'b0000_011_001_100_000;	//R4=R3+R1
-		iMem[11]=16'b0000_011_001_100_000;	//R4=R3+R1
+		//iMem[0]=16'b1100_001_010_000111;
+		//iMem[1]=16'b0000_000_001_010_000;	//R2=R0+R1
+		//iMem[2]=16'b0000_010_001_011_000;	//R3=R2+R1
+		//iMem[3]=16'b0000_000_001_010_000;	//R2=R0+R1
+		//iMem[4]=16'b0000_000_001_010_000;	//R2=R0+R1
+		//iMem[5]=16'b0000_000_001_010_000;	//R2=R0+R1
+		//iMem[6]=16'b0000_000_001_010_000;	//R2=R0+R1
+		//iMem[7]=16'b0000_000_001_010_000;	//R2=R0+R1
+		//iMem[8]=16'b0000_011_001_100_000;	//R4=R3+R1
+		//iMem[9]=16'b0000_011_001_100_000;	//R4=R3+R1
+		//iMem[10]=16'b0000_011_001_100_000;	//R4=R3+R1
+		//iMem[11]=16'b0000_011_001_100_000;	//R4=R3+R1
 		//Works
 		
 		HALTED=1'b0;
@@ -193,7 +203,7 @@ module IITB_RISCBP (clk1, rst);
 		 if ((EX_MEM_IR[15:12] == BEQ) && (EX_MEM_cond !=EX_MEM_H))// Takeen Branch was not correct																
 		 begin	
 			 
-			 IF_ID_IR <=  iMem[EX_MEM_ALUOut];							//If Branch was taken then take the next instruction from mem with EX_MEM_ALUOut as address
+			 IF_ID_IR <=  iMem[EX_MEM_ALUOut];	//If Branch was taken then take the next instruction from mem with EX_MEM_ALUOut as address
 			 EX_MEM_TAKEN_BRANCH <= 1'b1;
 			 RR_EX_TAKEN_BRANCH <=  1'b1;
 			 ID_RR_TAKEN_BRANCH <=  1'b1;
@@ -506,6 +516,7 @@ module IITB_RISCBP (clk1, rst);
 			 begin			 
 				 case (RR_EX_IR[15:12]) // "opcode"
 					 ADD: begin
+								//Data Hazard detection and Forwarding
 								//both matching operands
 								if(((EX_MEM_RC==RR_EX_RA && (EX_MEM_type==RR_ALU &&((EX_MEM_IR[1:0]==2'b10 && EX_MEM_carry==1) || (EX_MEM_IR[1:0]==2'b01 && EX_MEM_zero==1) || (EX_MEM_IR[1:0]==2'b00 || EX_MEM_IR[1:0]==2'b11))))&&(MEM_WB_RC==RR_EX_RB && (MEM_WB_type==RR_ALU &&((MEM_WB_IR[1:0]==2'b10 && MEM_WB_carry==1) || (MEM_WB_IR[1:0]==2'b01 && MEM_WB_zero==1) || (MEM_WB_IR[1:0]==2'b00 || MEM_WB_IR[1:0]==2'b11))))) && ((EX_MEM_TAKEN_BRANCH==1'b0)&&(MEM_WB_TAKEN_BRANCH==1'b0))) {EX_MEM_carry,EX_MEM_ALUOut} <=   EX_MEM_ALUOut + MEM_WB_ALUOut;
 								else if(((EX_MEM_RC==RR_EX_RB && (EX_MEM_type==RR_ALU &&((EX_MEM_IR[1:0]==2'b10 && EX_MEM_carry==1) || (EX_MEM_IR[1:0]==2'b01 && EX_MEM_zero==1) || (EX_MEM_IR[1:0]==2'b00 || EX_MEM_IR[1:0]==2'b11))))&&(MEM_WB_RC==RR_EX_RA && (MEM_WB_type==RR_ALU &&((MEM_WB_IR[1:0]==2'b10 && MEM_WB_carry==1) || (MEM_WB_IR[1:0]==2'b01 && MEM_WB_zero==1) || (MEM_WB_IR[1:0]==2'b00 || MEM_WB_IR[1:0]==2'b11))))) && ((EX_MEM_TAKEN_BRANCH==1'b0)&&(MEM_WB_TAKEN_BRANCH==1'b0))) {EX_MEM_carry,EX_MEM_ALUOut} <=   EX_MEM_ALUOut + MEM_WB_ALUOut;								
