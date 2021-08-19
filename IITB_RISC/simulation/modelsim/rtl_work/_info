@@ -1,0 +1,33 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/IITB Files/Placement/selfprojects/IITB_RISC/simulation/modelsim
+vIITB_RISCBP
+!s110 1629134128
+!i10b 1
+!s100 SzB=WS;Kfgh:0PzO4i;[l2
+ISDWlEL5`PEQVQM3NZUfHf3
+VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1629134116
+8D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v
+FD:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v
+L0 1
+OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1629134128.000000
+!s107 D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+D:/IITB Files/Placement/selfprojects/IITB_RISC|D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v|
+!i113 1
+o-vlog01compat -work work
+!s92 -vlog01compat -work work {+incdir+D:/IITB Files/Placement/selfprojects/IITB_RISC}
+tCvgOpt 0
+n@i@i@t@b_@r@i@s@c@b@p

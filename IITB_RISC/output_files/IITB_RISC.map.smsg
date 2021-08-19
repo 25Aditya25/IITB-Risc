@@ -1,0 +1,3 @@
+Warning (10268): Verilog HDL information at IITB_RISC.v(317): always construct contains both blocking and non-blocking assignments File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISC.v Line: 317
+Warning (10268): Verilog HDL information at IITB_RISCBP.v(182): always construct contains both blocking and non-blocking assignments File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 182
+Warning (10268): Verilog HDL information at IITB_RISCBP.v(480): always construct contains both blocking and non-blocking assignments File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 480

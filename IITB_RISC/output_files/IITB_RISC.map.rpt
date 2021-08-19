@@ -1,0 +1,1568 @@
+Analysis & Synthesis report for IITB_RISC
+Mon Aug 16 22:24:25 2021
+Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |IITB_RISCBP|EX_MEM_type
+  9. State Machine - |IITB_RISCBP|RR_EX_type
+ 10. State Machine - |IITB_RISCBP|ID_RR_type
+ 11. Registers Removed During Synthesis
+ 12. Removed Registers Triggering Further Register Optimizations
+ 13. General Register Statistics
+ 14. Registers Packed Into Inferred Megafunctions
+ 15. Registers Added for RAM Pass-Through Logic
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated
+ 18. Source assignments for altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated
+ 19. Source assignments for altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated
+ 20. Parameter Settings for User Entity Instance: Top-level Entity: |IITB_RISCBP
+ 21. Parameter Settings for Inferred Entity Instance: altsyncram:Reg_rtl_0
+ 22. Parameter Settings for Inferred Entity Instance: altsyncram:Reg_rtl_1
+ 23. Parameter Settings for Inferred Entity Instance: altsyncram:dMem_rtl_0
+ 24. altsyncram Parameter Settings by Entity Instance
+ 25. Post-Synthesis Netlist Statistics for Top Partition
+ 26. Elapsed Time Per Partition
+ 27. Analysis & Synthesis Messages
+ 28. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2018  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Mon Aug 16 22:24:25 2021       ;
+; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
+; Revision Name                   ; IITB_RISC                                   ;
+; Top-level Entity Name           ; IITB_RISCBP                                 ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 0                                           ;
+; Total pins                      ; 2                                           ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 0                                           ;
+; Total DSP Blocks                ; 0                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 0                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; IITB_RISCBP        ; IITB_RISC          ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 8           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 2           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
++----------------------------+-------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                             ;
++------------------------------------------------+-----------------+-------------------------------------------------------+-----------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path               ; Used in Netlist ; File Type                                             ; File Name with Absolute Path                                                                  ; Library ;
++------------------------------------------------+-----------------+-------------------------------------------------------+-----------------------------------------------------------------------------------------------+---------+
+; IITB_RISCBP.v                                  ; yes             ; User Verilog HDL File                                 ; D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v                                  ;         ;
+; altsyncram.tdf                                 ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf                         ;         ;
+; stratix_ram_block.inc                          ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/stratix_ram_block.inc                  ;         ;
+; lpm_mux.inc                                    ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_mux.inc                            ;         ;
+; lpm_decode.inc                                 ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/lpm_decode.inc                         ;         ;
+; aglobal181.inc                                 ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/aglobal181.inc                         ;         ;
+; a_rdenreg.inc                                  ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/a_rdenreg.inc                          ;         ;
+; altrom.inc                                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altrom.inc                             ;         ;
+; altram.inc                                     ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altram.inc                             ;         ;
+; altdpram.inc                                   ; yes             ; Megafunction                                          ; c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altdpram.inc                           ;         ;
+; db/altsyncram_c4v1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf                         ;         ;
+; db/iitb_risc.ram0_iitb_riscbp_29f3f2c6.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; D:/IITB Files/Placement/selfprojects/IITB_RISC/db/iitb_risc.ram0_iitb_riscbp_29f3f2c6.hdl.mif ;         ;
+; db/altsyncram_nmt1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf                         ;         ;
+; db/altsyncram_7gv1.tdf                         ; yes             ; Auto-Generated Megafunction                           ; D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf                         ;         ;
+; db/iitb_risc.ram1_iitb_riscbp_29f3f2c6.hdl.mif ; yes             ; Auto-Generated Auto-Found Memory Initialization File  ; D:/IITB Files/Placement/selfprojects/IITB_RISC/db/iitb_risc.ram1_iitb_riscbp_29f3f2c6.hdl.mif ;         ;
++------------------------------------------------+-----------------+-------------------------------------------------------+-----------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimate of Logic utilization (ALMs needed) ; 0     ;
+;                                             ;       ;
+; Combinational ALUT usage for logic          ; 0     ;
+;     -- 7 input functions                    ; 0     ;
+;     -- 6 input functions                    ; 0     ;
+;     -- 5 input functions                    ; 0     ;
+;     -- 4 input functions                    ; 0     ;
+;     -- <=3 input functions                  ; 0     ;
+;                                             ;       ;
+; Dedicated logic registers                   ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 2     ;
+;                                             ;       ;
+; Total DSP Blocks                            ; 0     ;
+;                                             ;       ;
+; Maximum fan-out node                        ; rst   ;
+; Maximum fan-out                             ; 1     ;
+; Total fan-out                               ; 2     ;
+; Average fan-out                             ; 0.50  ;
++---------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                    ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; Compilation Hierarchy Node ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name ; Entity Name ; Library Name ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+; |IITB_RISCBP               ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 2    ; 0            ; |IITB_RISCBP        ; IITB_RISCBP ; work         ;
++----------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+---------------------+-------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |IITB_RISCBP|EX_MEM_type                                                                                                                                                                    ;
++----------------------+--------------------+------------------+------------------+------------------+------------------+----------------------+----------------------+--------------------+------------------+
+; Name                 ; EX_MEM_type.BRANCH ; EX_MEM_type.SM_T ; EX_MEM_type.LM_T ; EX_MEM_type.RI_S ; EX_MEM_type.RI_L ; EX_MEM_type.RI_ALU_L ; EX_MEM_type.RI_ALU_A ; EX_MEM_type.RR_ALU ; EX_MEM_type.JUMP ;
++----------------------+--------------------+------------------+------------------+------------------+------------------+----------------------+----------------------+--------------------+------------------+
+; EX_MEM_type.RR_ALU   ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                    ; 0                    ; 0                  ; 0                ;
+; EX_MEM_type.RI_ALU_A ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                    ; 1                    ; 1                  ; 0                ;
+; EX_MEM_type.RI_ALU_L ; 0                  ; 0                ; 0                ; 0                ; 0                ; 1                    ; 0                    ; 1                  ; 0                ;
+; EX_MEM_type.RI_L     ; 0                  ; 0                ; 0                ; 0                ; 1                ; 0                    ; 0                    ; 1                  ; 0                ;
+; EX_MEM_type.RI_S     ; 0                  ; 0                ; 0                ; 1                ; 0                ; 0                    ; 0                    ; 1                  ; 0                ;
+; EX_MEM_type.LM_T     ; 0                  ; 0                ; 1                ; 0                ; 0                ; 0                    ; 0                    ; 1                  ; 0                ;
+; EX_MEM_type.SM_T     ; 0                  ; 1                ; 0                ; 0                ; 0                ; 0                    ; 0                    ; 1                  ; 0                ;
+; EX_MEM_type.BRANCH   ; 1                  ; 0                ; 0                ; 0                ; 0                ; 0                    ; 0                    ; 1                  ; 0                ;
+; EX_MEM_type.JUMP     ; 0                  ; 0                ; 0                ; 0                ; 0                ; 0                    ; 0                    ; 1                  ; 1                ;
++----------------------+--------------------+------------------+------------------+------------------+------------------+----------------------+----------------------+--------------------+------------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |IITB_RISCBP|RR_EX_type                                                                                                                                                           ;
++---------------------+-------------------+-----------------+-----------------+-----------------+-----------------+---------------------+---------------------+-------------------+-----------------+
+; Name                ; RR_EX_type.BRANCH ; RR_EX_type.SM_T ; RR_EX_type.LM_T ; RR_EX_type.RI_S ; RR_EX_type.RI_L ; RR_EX_type.RI_ALU_L ; RR_EX_type.RI_ALU_A ; RR_EX_type.RR_ALU ; RR_EX_type.JUMP ;
++---------------------+-------------------+-----------------+-----------------+-----------------+-----------------+---------------------+---------------------+-------------------+-----------------+
+; RR_EX_type.RR_ALU   ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 0                 ; 0               ;
+; RR_EX_type.RI_ALU_A ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 1                   ; 1                 ; 0               ;
+; RR_EX_type.RI_ALU_L ; 0                 ; 0               ; 0               ; 0               ; 0               ; 1                   ; 0                   ; 1                 ; 0               ;
+; RR_EX_type.RI_L     ; 0                 ; 0               ; 0               ; 0               ; 1               ; 0                   ; 0                   ; 1                 ; 0               ;
+; RR_EX_type.RI_S     ; 0                 ; 0               ; 0               ; 1               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; RR_EX_type.LM_T     ; 0                 ; 0               ; 1               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; RR_EX_type.SM_T     ; 0                 ; 1               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; RR_EX_type.BRANCH   ; 1                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; RR_EX_type.JUMP     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 1               ;
++---------------------+-------------------+-----------------+-----------------+-----------------+-----------------+---------------------+---------------------+-------------------+-----------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |IITB_RISCBP|ID_RR_type                                                                                                                                                           ;
++---------------------+-------------------+-----------------+-----------------+-----------------+-----------------+---------------------+---------------------+-------------------+-----------------+
+; Name                ; ID_RR_type.BRANCH ; ID_RR_type.SM_T ; ID_RR_type.LM_T ; ID_RR_type.RI_S ; ID_RR_type.RI_L ; ID_RR_type.RI_ALU_L ; ID_RR_type.RI_ALU_A ; ID_RR_type.RR_ALU ; ID_RR_type.JUMP ;
++---------------------+-------------------+-----------------+-----------------+-----------------+-----------------+---------------------+---------------------+-------------------+-----------------+
+; ID_RR_type.RR_ALU   ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 0                 ; 0               ;
+; ID_RR_type.RI_ALU_A ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 1                   ; 1                 ; 0               ;
+; ID_RR_type.RI_ALU_L ; 0                 ; 0               ; 0               ; 0               ; 0               ; 1                   ; 0                   ; 1                 ; 0               ;
+; ID_RR_type.RI_L     ; 0                 ; 0               ; 0               ; 0               ; 1               ; 0                   ; 0                   ; 1                 ; 0               ;
+; ID_RR_type.RI_S     ; 0                 ; 0               ; 0               ; 1               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; ID_RR_type.LM_T     ; 0                 ; 0               ; 1               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; ID_RR_type.SM_T     ; 0                 ; 1               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; ID_RR_type.BRANCH   ; 1                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 0               ;
+; ID_RR_type.JUMP     ; 0                 ; 0               ; 0               ; 0               ; 0               ; 0                   ; 0                   ; 1                 ; 1               ;
++---------------------+-------------------+-----------------+-----------------+-----------------+-----------------+---------------------+---------------------+-------------------+-----------------+
+
+
++----------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                               ;
++-----------------------------------------+----------------------------------------+
+; Register name                           ; Reason for Removal                     ;
++-----------------------------------------+----------------------------------------+
+; carry                                   ; Merged with WB_carry                   ;
+; zero                                    ; Merged with WB_zero                    ;
+; IF_ID_NPC[15]                           ; Merged with NPC[15]                    ;
+; IF_ID_NPC[14]                           ; Merged with NPC[14]                    ;
+; IF_ID_NPC[13]                           ; Merged with NPC[13]                    ;
+; IF_ID_NPC[12]                           ; Merged with NPC[12]                    ;
+; IF_ID_NPC[11]                           ; Merged with NPC[11]                    ;
+; IF_ID_NPC[10]                           ; Merged with NPC[10]                    ;
+; IF_ID_NPC[9]                            ; Merged with NPC[9]                     ;
+; IF_ID_NPC[8]                            ; Merged with NPC[8]                     ;
+; IF_ID_NPC[7]                            ; Merged with NPC[7]                     ;
+; IF_ID_NPC[6]                            ; Merged with NPC[6]                     ;
+; IF_ID_NPC[5]                            ; Merged with NPC[5]                     ;
+; IF_ID_NPC[4]                            ; Merged with NPC[4]                     ;
+; IF_ID_NPC[3]                            ; Merged with NPC[3]                     ;
+; IF_ID_NPC[2]                            ; Merged with NPC[2]                     ;
+; IF_ID_NPC[1]                            ; Merged with NPC[1]                     ;
+; IF_ID_NPC[0]                            ; Merged with NPC[0]                     ;
+; ID_RR_RA[2]                             ; Merged with ID_RR_IR[11]               ;
+; ID_RR_RA[1]                             ; Merged with ID_RR_IR[10]               ;
+; ID_RR_RA[0]                             ; Merged with ID_RR_IR[9]                ;
+; ID_RR_RB[2]                             ; Merged with ID_RR_IR[8]                ;
+; ID_RR_RB[1]                             ; Merged with ID_RR_IR[7]                ;
+; ID_RR_RB[0]                             ; Merged with ID_RR_IR[6]                ;
+; ID_RR_RC[2]                             ; Merged with ID_RR_IR[5]                ;
+; ID_RR_RC[1]                             ; Merged with ID_RR_IR[4]                ;
+; ID_RR_RC[0]                             ; Merged with ID_RR_IR[3]                ;
+; RR_EX_RA[2]                             ; Merged with RR_EX_IR[11]               ;
+; RR_EX_RA[1]                             ; Merged with RR_EX_IR[10]               ;
+; RR_EX_RA[0]                             ; Merged with RR_EX_IR[9]                ;
+; RR_EX_Imm[8]                            ; Merged with RR_EX_IR[8]                ;
+; RR_EX_RB[2]                             ; Merged with RR_EX_IR[8]                ;
+; RR_EX_RB[1]                             ; Merged with RR_EX_IR[7]                ;
+; RR_EX_RB[0]                             ; Merged with RR_EX_IR[6]                ;
+; RR_EX_Imm[5]                            ; Merged with RR_EX_IR[5]                ;
+; RR_EX_RC[2]                             ; Merged with RR_EX_IR[5]                ;
+; RR_EX_Imm[4]                            ; Merged with RR_EX_IR[4]                ;
+; RR_EX_RC[1]                             ; Merged with RR_EX_IR[4]                ;
+; RR_EX_Imm[3]                            ; Merged with RR_EX_IR[3]                ;
+; RR_EX_RC[0]                             ; Merged with RR_EX_IR[3]                ;
+; RR_EX_Imm[2]                            ; Merged with RR_EX_IR[2]                ;
+; RR_EX_Imm[1]                            ; Merged with RR_EX_IR[1]                ;
+; RR_EX_Imm[0]                            ; Merged with RR_EX_IR[0]                ;
+; EX_MEM_RA[2]                            ; Merged with EX_MEM_IR[11]              ;
+; EX_MEM_RA[1]                            ; Merged with EX_MEM_IR[10]              ;
+; EX_MEM_RA[0]                            ; Merged with EX_MEM_IR[9]               ;
+; EX_MEM_RB[2]                            ; Merged with EX_MEM_IR[8]               ;
+; EX_MEM_RB[1]                            ; Merged with EX_MEM_IR[7]               ;
+; EX_MEM_RB[0]                            ; Merged with EX_MEM_IR[6]               ;
+; EX_MEM_RC[2]                            ; Merged with EX_MEM_IR[5]               ;
+; EX_MEM_RC[1]                            ; Merged with EX_MEM_IR[4]               ;
+; EX_MEM_RC[0]                            ; Merged with EX_MEM_IR[3]               ;
+; MEM_WB_RA[2]                            ; Merged with MEM_WB_IR[11]              ;
+; MEM_WB_RA[1]                            ; Merged with MEM_WB_IR[10]              ;
+; MEM_WB_RA[0]                            ; Merged with MEM_WB_IR[9]               ;
+; MEM_WB_RB[2]                            ; Merged with MEM_WB_IR[8]               ;
+; MEM_WB_RB[1]                            ; Merged with MEM_WB_IR[7]               ;
+; MEM_WB_RB[0]                            ; Merged with MEM_WB_IR[6]               ;
+; MEM_WB_RC[2]                            ; Merged with MEM_WB_IR[5]               ;
+; MEM_WB_RC[1]                            ; Merged with MEM_WB_IR[4]               ;
+; MEM_WB_RC[0]                            ; Merged with MEM_WB_IR[3]               ;
+; IF_ID_IR[8,11]                          ; Stuck at GND due to stuck port data_in ;
+; Reg_rtl_1_bypass[6]                     ; Stuck at GND due to stuck port data_in ;
+; ID_RR_IR[8,11]                          ; Stuck at GND due to stuck port data_in ;
+; RR_EX_IR[8,11]                          ; Stuck at GND due to stuck port data_in ;
+; EX_MEM_IR[8,11]                         ; Stuck at GND due to stuck port data_in ;
+; MEM_WB_IR[8,11]                         ; Stuck at GND due to stuck port data_in ;
+; WB_RA[2]                                ; Stuck at GND due to stuck port data_in ;
+; WB_RB[2]                                ; Stuck at GND due to stuck port data_in ;
+; IF_ID_IR[0..2]                          ; Merged with IF_ID_IR[7]                ;
+; ID_RR_IR[0,2,7]                         ; Merged with ID_RR_IR[1]                ;
+; RR_EX_IR[1,2,7]                         ; Merged with RR_EX_IR[0]                ;
+; EX_MEM_IR[0,1,7]                        ; Merged with EX_MEM_IR[2]               ;
+; MEM_WB_IR[0,7]                          ; Merged with MEM_WB_IR[1]               ;
+; WB_IR[0,1]                              ; Merged with WB_RB[1]                   ;
+; EX_MEM_type~7                           ; Lost fanout                            ;
+; EX_MEM_type~8                           ; Lost fanout                            ;
+; EX_MEM_type~9                           ; Lost fanout                            ;
+; RR_EX_type~11                           ; Lost fanout                            ;
+; RR_EX_type~12                           ; Lost fanout                            ;
+; RR_EX_type~13                           ; Lost fanout                            ;
+; ID_RR_type~2                            ; Lost fanout                            ;
+; ID_RR_type~3                            ; Lost fanout                            ;
+; ID_RR_type~4                            ; Lost fanout                            ;
+; WB_carry                                ; Lost fanout                            ;
+; WB_zero                                 ; Lost fanout                            ;
+; MEM_WB_carry                            ; Lost fanout                            ;
+; MEM_WB_zero                             ; Lost fanout                            ;
+; EX_MEM_carry                            ; Lost fanout                            ;
+; EX_MEM_zero                             ; Lost fanout                            ;
+; MEM_WB_type[2]                          ; Lost fanout                            ;
+; MEM_WB_TAKEN_BRANCH                     ; Lost fanout                            ;
+; MEM_WB_IR[1]                            ; Lost fanout                            ;
+; MEM_WB_type[0,1,3]                      ; Lost fanout                            ;
+; MEM_WB_ALUOut[0..15]                    ; Lost fanout                            ;
+; HALTED                                  ; Lost fanout                            ;
+; MEM_WB_IR[3..6,9,10]                    ; Lost fanout                            ;
+; ID_RR_IR[9,10]                          ; Lost fanout                            ;
+; IF_ID_IR[6,7]                           ; Lost fanout                            ;
+; EX_MEM_type.RI_S                        ; Lost fanout                            ;
+; EX_MEM_B[0..15]                         ; Lost fanout                            ;
+; EX_MEM_type.RI_L                        ; Lost fanout                            ;
+; EX_MEM_ALUOut[0..9]                     ; Lost fanout                            ;
+; EX_MEM_type.LM_T                        ; Lost fanout                            ;
+; EX_MEM_type.SM_T                        ; Lost fanout                            ;
+; EX_MEM_type.BRANCH                      ; Lost fanout                            ;
+; EX_MEM_TAKEN_BRANCH                     ; Lost fanout                            ;
+; EX_MEM_IR[2]                            ; Lost fanout                            ;
+; EX_MEM_type.RI_ALU_L                    ; Lost fanout                            ;
+; EX_MEM_type.RI_ALU_A                    ; Lost fanout                            ;
+; EX_MEM_type.JUMP                        ; Lost fanout                            ;
+; EX_MEM_type.RR_ALU                      ; Lost fanout                            ;
+; EX_MEM_ALUOut[10..15]                   ; Lost fanout                            ;
+; IF_ID_IR[12..15]                        ; Lost fanout                            ;
+; EX_MEM_IR[3..6,9,10]                    ; Lost fanout                            ;
+; IF_ID_IR[9,10]                          ; Lost fanout                            ;
+; EX_MEM_IR[12..15]                       ; Lost fanout                            ;
+; EX_MEM_cond                             ; Lost fanout                            ;
+; RR_EX_IR[12..15]                        ; Lost fanout                            ;
+; ID_RR_IR[12..15]                        ; Lost fanout                            ;
+; NPC[0]                                  ; Lost fanout                            ;
+; RR_EX_B[0]                              ; Lost fanout                            ;
+; BHT[0][1]                               ; Lost fanout                            ;
+; BHT[0][2]                               ; Lost fanout                            ;
+; BHT[0][3]                               ; Lost fanout                            ;
+; BHT[0][4]                               ; Lost fanout                            ;
+; BHT[0][5]                               ; Lost fanout                            ;
+; BHT[0][6]                               ; Lost fanout                            ;
+; BHT[0][7]                               ; Lost fanout                            ;
+; BHT[0][8]                               ; Lost fanout                            ;
+; BHT[0][9]                               ; Lost fanout                            ;
+; BHT[0][10]                              ; Lost fanout                            ;
+; BHT[0][11]                              ; Lost fanout                            ;
+; BHT[0][12]                              ; Lost fanout                            ;
+; BHT[0][13]                              ; Lost fanout                            ;
+; BHT[0][14]                              ; Lost fanout                            ;
+; BHT[0][15]                              ; Lost fanout                            ;
+; BHT[0][16]                              ; Lost fanout                            ;
+; BHT[1][1]                               ; Lost fanout                            ;
+; BHT[1][2]                               ; Lost fanout                            ;
+; BHT[1][3]                               ; Lost fanout                            ;
+; BHT[1][4]                               ; Lost fanout                            ;
+; BHT[1][5]                               ; Lost fanout                            ;
+; BHT[1][6]                               ; Lost fanout                            ;
+; BHT[1][7]                               ; Lost fanout                            ;
+; BHT[1][8]                               ; Lost fanout                            ;
+; BHT[1][9]                               ; Lost fanout                            ;
+; BHT[1][10]                              ; Lost fanout                            ;
+; BHT[1][11]                              ; Lost fanout                            ;
+; BHT[1][12]                              ; Lost fanout                            ;
+; BHT[1][13]                              ; Lost fanout                            ;
+; BHT[1][14]                              ; Lost fanout                            ;
+; BHT[1][15]                              ; Lost fanout                            ;
+; BHT[1][16]                              ; Lost fanout                            ;
+; BHT[2][1]                               ; Lost fanout                            ;
+; BHT[2][2]                               ; Lost fanout                            ;
+; BHT[2][3]                               ; Lost fanout                            ;
+; BHT[2][4]                               ; Lost fanout                            ;
+; BHT[2][5]                               ; Lost fanout                            ;
+; BHT[2][6]                               ; Lost fanout                            ;
+; BHT[2][7]                               ; Lost fanout                            ;
+; BHT[2][8]                               ; Lost fanout                            ;
+; BHT[2][9]                               ; Lost fanout                            ;
+; BHT[2][10]                              ; Lost fanout                            ;
+; BHT[2][11]                              ; Lost fanout                            ;
+; BHT[2][12]                              ; Lost fanout                            ;
+; BHT[2][13]                              ; Lost fanout                            ;
+; BHT[2][14]                              ; Lost fanout                            ;
+; BHT[2][15]                              ; Lost fanout                            ;
+; BHT[2][16]                              ; Lost fanout                            ;
+; BHT[3][1]                               ; Lost fanout                            ;
+; BHT[3][2]                               ; Lost fanout                            ;
+; BHT[3][3]                               ; Lost fanout                            ;
+; BHT[3][4]                               ; Lost fanout                            ;
+; BHT[3][5]                               ; Lost fanout                            ;
+; BHT[3][6]                               ; Lost fanout                            ;
+; BHT[3][7]                               ; Lost fanout                            ;
+; BHT[3][8]                               ; Lost fanout                            ;
+; BHT[3][9]                               ; Lost fanout                            ;
+; BHT[3][10]                              ; Lost fanout                            ;
+; BHT[3][11]                              ; Lost fanout                            ;
+; BHT[3][12]                              ; Lost fanout                            ;
+; BHT[3][13]                              ; Lost fanout                            ;
+; BHT[3][14]                              ; Lost fanout                            ;
+; BHT[3][15]                              ; Lost fanout                            ;
+; BHT[3][16]                              ; Lost fanout                            ;
+; BHT[4][1]                               ; Lost fanout                            ;
+; BHT[4][2]                               ; Lost fanout                            ;
+; BHT[4][3]                               ; Lost fanout                            ;
+; BHT[4][4]                               ; Lost fanout                            ;
+; BHT[4][5]                               ; Lost fanout                            ;
+; BHT[4][6]                               ; Lost fanout                            ;
+; BHT[4][7]                               ; Lost fanout                            ;
+; BHT[4][8]                               ; Lost fanout                            ;
+; BHT[4][9]                               ; Lost fanout                            ;
+; BHT[4][10]                              ; Lost fanout                            ;
+; BHT[4][11]                              ; Lost fanout                            ;
+; BHT[4][12]                              ; Lost fanout                            ;
+; BHT[4][13]                              ; Lost fanout                            ;
+; BHT[4][14]                              ; Lost fanout                            ;
+; BHT[4][15]                              ; Lost fanout                            ;
+; BHT[4][16]                              ; Lost fanout                            ;
+; BHT[5][1]                               ; Lost fanout                            ;
+; BHT[5][2]                               ; Lost fanout                            ;
+; BHT[5][3]                               ; Lost fanout                            ;
+; BHT[5][4]                               ; Lost fanout                            ;
+; BHT[5][5]                               ; Lost fanout                            ;
+; BHT[5][6]                               ; Lost fanout                            ;
+; BHT[5][7]                               ; Lost fanout                            ;
+; BHT[5][8]                               ; Lost fanout                            ;
+; BHT[5][9]                               ; Lost fanout                            ;
+; BHT[5][10]                              ; Lost fanout                            ;
+; BHT[5][11]                              ; Lost fanout                            ;
+; BHT[5][12]                              ; Lost fanout                            ;
+; BHT[5][13]                              ; Lost fanout                            ;
+; BHT[5][14]                              ; Lost fanout                            ;
+; BHT[5][15]                              ; Lost fanout                            ;
+; BHT[5][16]                              ; Lost fanout                            ;
+; BHT[6][1]                               ; Lost fanout                            ;
+; BHT[6][2]                               ; Lost fanout                            ;
+; BHT[6][3]                               ; Lost fanout                            ;
+; BHT[6][4]                               ; Lost fanout                            ;
+; BHT[6][5]                               ; Lost fanout                            ;
+; BHT[6][6]                               ; Lost fanout                            ;
+; BHT[6][7]                               ; Lost fanout                            ;
+; BHT[6][8]                               ; Lost fanout                            ;
+; BHT[6][9]                               ; Lost fanout                            ;
+; BHT[6][10]                              ; Lost fanout                            ;
+; BHT[6][11]                              ; Lost fanout                            ;
+; BHT[6][12]                              ; Lost fanout                            ;
+; BHT[6][13]                              ; Lost fanout                            ;
+; BHT[6][14]                              ; Lost fanout                            ;
+; BHT[6][15]                              ; Lost fanout                            ;
+; BHT[6][16]                              ; Lost fanout                            ;
+; BHT[7][1]                               ; Lost fanout                            ;
+; BHT[7][2]                               ; Lost fanout                            ;
+; BHT[7][3]                               ; Lost fanout                            ;
+; BHT[7][4]                               ; Lost fanout                            ;
+; BHT[7][5]                               ; Lost fanout                            ;
+; BHT[7][6]                               ; Lost fanout                            ;
+; BHT[7][7]                               ; Lost fanout                            ;
+; BHT[7][8]                               ; Lost fanout                            ;
+; BHT[7][9]                               ; Lost fanout                            ;
+; BHT[7][10]                              ; Lost fanout                            ;
+; BHT[7][11]                              ; Lost fanout                            ;
+; BHT[7][12]                              ; Lost fanout                            ;
+; BHT[7][13]                              ; Lost fanout                            ;
+; BHT[7][14]                              ; Lost fanout                            ;
+; BHT[7][15]                              ; Lost fanout                            ;
+; BHT[7][16]                              ; Lost fanout                            ;
+; BHT[8][1]                               ; Lost fanout                            ;
+; BHT[8][2]                               ; Lost fanout                            ;
+; BHT[8][3]                               ; Lost fanout                            ;
+; BHT[8][4]                               ; Lost fanout                            ;
+; BHT[8][5]                               ; Lost fanout                            ;
+; BHT[8][6]                               ; Lost fanout                            ;
+; BHT[8][7]                               ; Lost fanout                            ;
+; BHT[8][8]                               ; Lost fanout                            ;
+; BHT[8][9]                               ; Lost fanout                            ;
+; BHT[8][10]                              ; Lost fanout                            ;
+; BHT[8][11]                              ; Lost fanout                            ;
+; BHT[8][12]                              ; Lost fanout                            ;
+; BHT[8][13]                              ; Lost fanout                            ;
+; BHT[8][14]                              ; Lost fanout                            ;
+; BHT[8][15]                              ; Lost fanout                            ;
+; BHT[8][16]                              ; Lost fanout                            ;
+; BHT[9][1]                               ; Lost fanout                            ;
+; BHT[9][2]                               ; Lost fanout                            ;
+; BHT[9][3]                               ; Lost fanout                            ;
+; BHT[9][4]                               ; Lost fanout                            ;
+; BHT[9][5]                               ; Lost fanout                            ;
+; BHT[9][6]                               ; Lost fanout                            ;
+; BHT[9][7]                               ; Lost fanout                            ;
+; BHT[9][8]                               ; Lost fanout                            ;
+; BHT[9][9]                               ; Lost fanout                            ;
+; BHT[9][10]                              ; Lost fanout                            ;
+; BHT[9][11]                              ; Lost fanout                            ;
+; BHT[9][12]                              ; Lost fanout                            ;
+; BHT[9][13]                              ; Lost fanout                            ;
+; BHT[9][14]                              ; Lost fanout                            ;
+; BHT[9][15]                              ; Lost fanout                            ;
+; BHT[9][16]                              ; Lost fanout                            ;
+; BHT[10][1]                              ; Lost fanout                            ;
+; BHT[10][2]                              ; Lost fanout                            ;
+; BHT[10][3]                              ; Lost fanout                            ;
+; BHT[10][4]                              ; Lost fanout                            ;
+; BHT[10][5]                              ; Lost fanout                            ;
+; BHT[10][6]                              ; Lost fanout                            ;
+; BHT[10][7]                              ; Lost fanout                            ;
+; BHT[10][8]                              ; Lost fanout                            ;
+; BHT[10][9]                              ; Lost fanout                            ;
+; BHT[10][10]                             ; Lost fanout                            ;
+; BHT[10][11]                             ; Lost fanout                            ;
+; BHT[10][12]                             ; Lost fanout                            ;
+; BHT[10][13]                             ; Lost fanout                            ;
+; BHT[10][14]                             ; Lost fanout                            ;
+; BHT[10][15]                             ; Lost fanout                            ;
+; BHT[10][16]                             ; Lost fanout                            ;
+; BHT[11][1]                              ; Lost fanout                            ;
+; BHT[11][2]                              ; Lost fanout                            ;
+; BHT[11][3]                              ; Lost fanout                            ;
+; BHT[11][4]                              ; Lost fanout                            ;
+; BHT[11][5]                              ; Lost fanout                            ;
+; BHT[11][6]                              ; Lost fanout                            ;
+; BHT[11][7]                              ; Lost fanout                            ;
+; BHT[11][8]                              ; Lost fanout                            ;
+; BHT[11][9]                              ; Lost fanout                            ;
+; BHT[11][10]                             ; Lost fanout                            ;
+; BHT[11][11]                             ; Lost fanout                            ;
+; BHT[11][12]                             ; Lost fanout                            ;
+; BHT[11][13]                             ; Lost fanout                            ;
+; BHT[11][14]                             ; Lost fanout                            ;
+; BHT[11][15]                             ; Lost fanout                            ;
+; BHT[11][16]                             ; Lost fanout                            ;
+; BHT[12][1]                              ; Lost fanout                            ;
+; BHT[12][2]                              ; Lost fanout                            ;
+; BHT[12][3]                              ; Lost fanout                            ;
+; BHT[12][4]                              ; Lost fanout                            ;
+; BHT[12][5]                              ; Lost fanout                            ;
+; BHT[12][6]                              ; Lost fanout                            ;
+; BHT[12][7]                              ; Lost fanout                            ;
+; BHT[12][8]                              ; Lost fanout                            ;
+; BHT[12][9]                              ; Lost fanout                            ;
+; BHT[12][10]                             ; Lost fanout                            ;
+; BHT[12][11]                             ; Lost fanout                            ;
+; BHT[12][12]                             ; Lost fanout                            ;
+; BHT[12][13]                             ; Lost fanout                            ;
+; BHT[12][14]                             ; Lost fanout                            ;
+; BHT[12][15]                             ; Lost fanout                            ;
+; BHT[12][16]                             ; Lost fanout                            ;
+; BHT[13][1]                              ; Lost fanout                            ;
+; BHT[13][2]                              ; Lost fanout                            ;
+; BHT[13][3]                              ; Lost fanout                            ;
+; BHT[13][4]                              ; Lost fanout                            ;
+; BHT[13][5]                              ; Lost fanout                            ;
+; BHT[13][6]                              ; Lost fanout                            ;
+; BHT[13][7]                              ; Lost fanout                            ;
+; BHT[13][8]                              ; Lost fanout                            ;
+; BHT[13][9]                              ; Lost fanout                            ;
+; BHT[13][10]                             ; Lost fanout                            ;
+; BHT[13][11]                             ; Lost fanout                            ;
+; BHT[13][12]                             ; Lost fanout                            ;
+; BHT[13][13]                             ; Lost fanout                            ;
+; BHT[13][14]                             ; Lost fanout                            ;
+; BHT[13][15]                             ; Lost fanout                            ;
+; BHT[13][16]                             ; Lost fanout                            ;
+; BHT[14][1]                              ; Lost fanout                            ;
+; BHT[14][2]                              ; Lost fanout                            ;
+; BHT[14][3]                              ; Lost fanout                            ;
+; BHT[14][4]                              ; Lost fanout                            ;
+; BHT[14][5]                              ; Lost fanout                            ;
+; BHT[14][6]                              ; Lost fanout                            ;
+; BHT[14][7]                              ; Lost fanout                            ;
+; BHT[14][8]                              ; Lost fanout                            ;
+; BHT[14][9]                              ; Lost fanout                            ;
+; BHT[14][10]                             ; Lost fanout                            ;
+; BHT[14][11]                             ; Lost fanout                            ;
+; BHT[14][12]                             ; Lost fanout                            ;
+; BHT[14][13]                             ; Lost fanout                            ;
+; BHT[14][14]                             ; Lost fanout                            ;
+; BHT[14][15]                             ; Lost fanout                            ;
+; BHT[14][16]                             ; Lost fanout                            ;
+; BHT[15][1]                              ; Lost fanout                            ;
+; BHT[15][2]                              ; Lost fanout                            ;
+; BHT[15][3]                              ; Lost fanout                            ;
+; BHT[15][4]                              ; Lost fanout                            ;
+; BHT[15][5]                              ; Lost fanout                            ;
+; BHT[15][6]                              ; Lost fanout                            ;
+; BHT[15][7]                              ; Lost fanout                            ;
+; BHT[15][8]                              ; Lost fanout                            ;
+; BHT[15][9]                              ; Lost fanout                            ;
+; BHT[15][10]                             ; Lost fanout                            ;
+; BHT[15][11]                             ; Lost fanout                            ;
+; BHT[15][12]                             ; Lost fanout                            ;
+; BHT[15][13]                             ; Lost fanout                            ;
+; BHT[15][14]                             ; Lost fanout                            ;
+; BHT[15][15]                             ; Lost fanout                            ;
+; BHT[15][16]                             ; Lost fanout                            ;
+; BHT[0][0]                               ; Lost fanout                            ;
+; BHT[1][0]                               ; Lost fanout                            ;
+; BHT[2][0]                               ; Lost fanout                            ;
+; BHT[3][0]                               ; Lost fanout                            ;
+; pos[0,1]                                ; Lost fanout                            ;
+; BHT[4][0]                               ; Lost fanout                            ;
+; BHT[5][0]                               ; Lost fanout                            ;
+; BHT[6][0]                               ; Lost fanout                            ;
+; BHT[7][0]                               ; Lost fanout                            ;
+; BHT[8][0]                               ; Lost fanout                            ;
+; BHT[9][0]                               ; Lost fanout                            ;
+; BHT[10][0]                              ; Lost fanout                            ;
+; BHT[11][0]                              ; Lost fanout                            ;
+; BHT[12][0]                              ; Lost fanout                            ;
+; BHT[13][0]                              ; Lost fanout                            ;
+; BHT[14][0]                              ; Lost fanout                            ;
+; BHT[15][0]                              ; Lost fanout                            ;
+; pos[2,3]                                ; Lost fanout                            ;
+; NPC[1]                                  ; Lost fanout                            ;
+; RR_EX_B[1]                              ; Lost fanout                            ;
+; NPC[2]                                  ; Lost fanout                            ;
+; RR_EX_B[2]                              ; Lost fanout                            ;
+; NPC[3]                                  ; Lost fanout                            ;
+; RR_EX_B[3]                              ; Lost fanout                            ;
+; NPC[4]                                  ; Lost fanout                            ;
+; RR_EX_B[4]                              ; Lost fanout                            ;
+; NPC[5]                                  ; Lost fanout                            ;
+; RR_EX_B[5]                              ; Lost fanout                            ;
+; NPC[6]                                  ; Lost fanout                            ;
+; RR_EX_B[6]                              ; Lost fanout                            ;
+; NPC[7]                                  ; Lost fanout                            ;
+; RR_EX_B[7]                              ; Lost fanout                            ;
+; NPC[8]                                  ; Lost fanout                            ;
+; RR_EX_B[8]                              ; Lost fanout                            ;
+; NPC[9]                                  ; Lost fanout                            ;
+; RR_EX_B[9]                              ; Lost fanout                            ;
+; RR_EX_type.RI_S                         ; Lost fanout                            ;
+; RR_EX_type.RI_L                         ; Lost fanout                            ;
+; RR_EX_B[10..15]                         ; Lost fanout                            ;
+; RR_EX_NPC[0]                            ; Lost fanout                            ;
+; RR_EX_type.JUMP                         ; Lost fanout                            ;
+; RR_EX_type.BRANCH                       ; Lost fanout                            ;
+; RR_EX_IR[0,6]                           ; Lost fanout                            ;
+; WB_TAKEN_BRANCH                         ; Lost fanout                            ;
+; WB_RC[0..2]                             ; Lost fanout                            ;
+; WB_type[0..3]                           ; Lost fanout                            ;
+; WB_RB[0,1]                              ; Lost fanout                            ;
+; WB_RA[0,1]                              ; Lost fanout                            ;
+; RR_EX_type.RI_ALU_A                     ; Lost fanout                            ;
+; RR_EX_IR[9,10]                          ; Lost fanout                            ;
+; RR_EX_type.RR_ALU                       ; Lost fanout                            ;
+; WB_ALUOut[0]                            ; Lost fanout                            ;
+; WB_LMD[0]                               ; Lost fanout                            ;
+; RR_EX_type.LM_T                         ; Lost fanout                            ;
+; RR_EX_type.SM_T                         ; Lost fanout                            ;
+; RR_EX_NPC[1]                            ; Lost fanout                            ;
+; WB_ALUOut[1]                            ; Lost fanout                            ;
+; WB_LMD[1]                               ; Lost fanout                            ;
+; RR_EX_NPC[2]                            ; Lost fanout                            ;
+; WB_ALUOut[2]                            ; Lost fanout                            ;
+; WB_LMD[2]                               ; Lost fanout                            ;
+; RR_EX_NPC[3]                            ; Lost fanout                            ;
+; WB_ALUOut[3]                            ; Lost fanout                            ;
+; WB_LMD[3]                               ; Lost fanout                            ;
+; RR_EX_NPC[4]                            ; Lost fanout                            ;
+; WB_ALUOut[4]                            ; Lost fanout                            ;
+; WB_LMD[4]                               ; Lost fanout                            ;
+; RR_EX_NPC[5]                            ; Lost fanout                            ;
+; WB_ALUOut[5]                            ; Lost fanout                            ;
+; WB_LMD[5]                               ; Lost fanout                            ;
+; RR_EX_NPC[6]                            ; Lost fanout                            ;
+; WB_ALUOut[6]                            ; Lost fanout                            ;
+; WB_LMD[6]                               ; Lost fanout                            ;
+; RR_EX_NPC[7]                            ; Lost fanout                            ;
+; RR_EX_type.RI_ALU_L                     ; Lost fanout                            ;
+; WB_ALUOut[7]                            ; Lost fanout                            ;
+; WB_LMD[7]                               ; Lost fanout                            ;
+; RR_EX_NPC[8]                            ; Lost fanout                            ;
+; WB_ALUOut[8]                            ; Lost fanout                            ;
+; WB_LMD[8]                               ; Lost fanout                            ;
+; RR_EX_NPC[9]                            ; Lost fanout                            ;
+; WB_ALUOut[9]                            ; Lost fanout                            ;
+; WB_LMD[9]                               ; Lost fanout                            ;
+; RR_EX_TAKEN_BRANCH                      ; Lost fanout                            ;
+; RR_EX_NPC[10]                           ; Lost fanout                            ;
+; RR_EX_IR[3]                             ; Lost fanout                            ;
+; WB_ALUOut[10]                           ; Lost fanout                            ;
+; WB_LMD[10]                              ; Lost fanout                            ;
+; RR_EX_NPC[11]                           ; Lost fanout                            ;
+; RR_EX_IR[4]                             ; Lost fanout                            ;
+; WB_ALUOut[11]                           ; Lost fanout                            ;
+; WB_LMD[11]                              ; Lost fanout                            ;
+; RR_EX_NPC[12]                           ; Lost fanout                            ;
+; RR_EX_IR[5]                             ; Lost fanout                            ;
+; WB_ALUOut[12]                           ; Lost fanout                            ;
+; WB_LMD[12]                              ; Lost fanout                            ;
+; RR_EX_NPC[13]                           ; Lost fanout                            ;
+; WB_ALUOut[13]                           ; Lost fanout                            ;
+; WB_LMD[13]                              ; Lost fanout                            ;
+; RR_EX_NPC[14]                           ; Lost fanout                            ;
+; WB_ALUOut[14]                           ; Lost fanout                            ;
+; WB_LMD[14]                              ; Lost fanout                            ;
+; RR_EX_NPC[15]                           ; Lost fanout                            ;
+; WB_ALUOut[15]                           ; Lost fanout                            ;
+; WB_LMD[15]                              ; Lost fanout                            ;
+; Reg_rtl_1_bypass[0..5,7,8]              ; Lost fanout                            ;
+; ID_RR_IR[1]                             ; Lost fanout                            ;
+; INDEX[0..3]                             ; Lost fanout                            ;
+; MRU[0..3]                               ; Lost fanout                            ;
+; ID_RR_NPC[0..15]                        ; Lost fanout                            ;
+; Reg_rtl_1_bypass[9..14]                 ; Lost fanout                            ;
+; ID_RR_IR[3]                             ; Lost fanout                            ;
+; IF_ID_IR[3]                             ; Lost fanout                            ;
+; Reg_rtl_1_bypass[15,16]                 ; Lost fanout                            ;
+; ID_RR_IR[4]                             ; Lost fanout                            ;
+; IF_ID_IR[4]                             ; Lost fanout                            ;
+; Reg_rtl_1_bypass[17,18]                 ; Lost fanout                            ;
+; ID_RR_IR[5]                             ; Lost fanout                            ;
+; IF_ID_IR[5]                             ; Lost fanout                            ;
+; Reg_rtl_1_bypass[19..26]                ; Lost fanout                            ;
+; ID_RR_type.RI_S                         ; Lost fanout                            ;
+; ID_RR_type.RI_L                         ; Lost fanout                            ;
+; Reg_rtl_1_bypass[27..38]                ; Lost fanout                            ;
+; ID_RR_type.JUMP                         ; Lost fanout                            ;
+; ID_RR_type.BRANCH                       ; Lost fanout                            ;
+; ID_RR_IR[6]                             ; Lost fanout                            ;
+; ID_RR_type.RI_ALU_A                     ; Lost fanout                            ;
+; ID_RR_type.RR_ALU                       ; Lost fanout                            ;
+; ID_RR_type.LM_T                         ; Lost fanout                            ;
+; ID_RR_type.SM_T                         ; Lost fanout                            ;
+; ID_RR_type.RI_ALU_L                     ; Lost fanout                            ;
+; ID_RR_TAKEN_BRANCH                      ; Lost fanout                            ;
+; EX_MEM_NPC[0]                           ; Lost fanout                            ;
+; NPC[10..15]                             ; Lost fanout                            ;
+; EX_MEM_NPC[1..15]                       ; Lost fanout                            ;
+; Total Number of Removed Registers = 687 ;                                        ;
++-----------------------------------------+----------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                                   ;
++---------------+---------------------------+---------------------------------------------------------------------------------------------------+
+; Register name ; Reason for Removal        ; Registers Removed due to This Register                                                            ;
++---------------+---------------------------+---------------------------------------------------------------------------------------------------+
+; BHT[0][1]     ; Lost Fanouts              ; BHT[0][2], BHT[0][3], BHT[0][4], BHT[0][5], BHT[0][6], BHT[0][7], BHT[0][8], BHT[0][9],           ;
+;               ;                           ; BHT[0][10], BHT[0][11], BHT[0][12], BHT[0][13], BHT[0][14], BHT[0][15], BHT[0][16], BHT[1][1],    ;
+;               ;                           ; BHT[1][2], BHT[1][3], BHT[1][4], BHT[1][5], BHT[1][6], BHT[1][7], BHT[1][8], BHT[1][9],           ;
+;               ;                           ; BHT[1][10], BHT[1][11], BHT[1][12], BHT[1][13], BHT[1][14], BHT[1][15], BHT[1][16], BHT[2][1],    ;
+;               ;                           ; BHT[2][2], BHT[2][3], BHT[2][4], BHT[2][5], BHT[2][6], BHT[2][7], BHT[2][8], BHT[2][9],           ;
+;               ;                           ; BHT[2][10], BHT[2][11], BHT[2][12], BHT[2][13], BHT[2][14], BHT[2][15], BHT[2][16], BHT[3][1],    ;
+;               ;                           ; BHT[3][2], BHT[3][3], BHT[3][4], BHT[3][5], BHT[3][6], BHT[3][7], BHT[3][8], BHT[3][9],           ;
+;               ;                           ; BHT[3][10], BHT[3][11], BHT[3][12], BHT[3][13], BHT[3][14], BHT[3][15], BHT[3][16], BHT[4][1],    ;
+;               ;                           ; BHT[4][2], BHT[4][3], BHT[4][4], BHT[4][5], BHT[4][6], BHT[4][7], BHT[4][8], BHT[4][9],           ;
+;               ;                           ; BHT[4][10], BHT[4][11], BHT[4][12], BHT[4][13], BHT[4][14], BHT[4][15], BHT[4][16], BHT[5][1],    ;
+;               ;                           ; BHT[5][2], BHT[5][3], BHT[5][4], BHT[5][5], BHT[5][6], BHT[5][7], BHT[5][8], BHT[5][9],           ;
+;               ;                           ; BHT[5][10], BHT[5][11], BHT[5][12], BHT[5][13], BHT[5][14], BHT[5][15], BHT[5][16], BHT[6][1],    ;
+;               ;                           ; BHT[6][2], BHT[6][3], BHT[6][4], BHT[6][5], BHT[6][6], BHT[6][7], BHT[6][8], BHT[6][9],           ;
+;               ;                           ; BHT[6][10], BHT[6][11], BHT[6][12], BHT[6][13], BHT[6][14], BHT[6][15], BHT[6][16], BHT[7][1],    ;
+;               ;                           ; BHT[7][2], BHT[7][3], BHT[7][4], BHT[7][5], BHT[7][6], BHT[7][7], BHT[7][8], BHT[7][9],           ;
+;               ;                           ; BHT[7][10], BHT[7][11], BHT[7][12], BHT[7][13], BHT[7][14], BHT[7][15], BHT[7][16], BHT[8][1],    ;
+;               ;                           ; BHT[8][2], BHT[8][3], BHT[8][4], BHT[8][5], BHT[8][6], BHT[8][7], BHT[8][8], BHT[8][9],           ;
+;               ;                           ; BHT[8][10], BHT[8][11], BHT[8][12], BHT[8][13], BHT[8][14], BHT[8][15], BHT[8][16], BHT[9][1],    ;
+;               ;                           ; BHT[9][2], BHT[9][3], BHT[9][4], BHT[9][5], BHT[9][6], BHT[9][7], BHT[9][8], BHT[9][9],           ;
+;               ;                           ; BHT[9][10], BHT[9][11], BHT[9][12], BHT[9][13], BHT[9][14], BHT[9][15], BHT[9][16], BHT[10][1],   ;
+;               ;                           ; BHT[10][2], BHT[10][3], BHT[10][4], BHT[10][5], BHT[10][6], BHT[10][7], BHT[10][8], BHT[10][9],   ;
+;               ;                           ; BHT[10][10], BHT[10][11], BHT[10][12], BHT[10][13], BHT[10][14], BHT[10][15], BHT[10][16],        ;
+;               ;                           ; BHT[11][1], BHT[11][2], BHT[11][3], BHT[11][4], BHT[11][5], BHT[11][6], BHT[11][7], BHT[11][8],   ;
+;               ;                           ; BHT[11][9], BHT[11][10], BHT[11][11], BHT[11][12], BHT[11][13], BHT[11][14], BHT[11][15],         ;
+;               ;                           ; BHT[11][16], BHT[12][1], BHT[12][2], BHT[12][3], BHT[12][4], BHT[12][5], BHT[12][6],              ;
+;               ;                           ; BHT[12][7], BHT[12][8], BHT[12][9], BHT[12][10], BHT[12][11], BHT[12][12], BHT[12][13],           ;
+;               ;                           ; BHT[12][14], BHT[12][15], BHT[12][16], BHT[13][1], BHT[13][2], BHT[13][3], BHT[13][4],            ;
+;               ;                           ; BHT[13][5], BHT[13][6], BHT[13][7], BHT[13][8], BHT[13][9], BHT[13][10], BHT[13][11],             ;
+;               ;                           ; BHT[13][12], BHT[13][13], BHT[13][14], BHT[13][15], BHT[13][16], BHT[14][1], BHT[14][2],          ;
+;               ;                           ; BHT[14][3], BHT[14][4], BHT[14][5], BHT[14][6], BHT[14][7], BHT[14][8], BHT[14][9],               ;
+;               ;                           ; BHT[14][10], BHT[14][11], BHT[14][12], BHT[14][13], BHT[14][14], BHT[14][15], BHT[14][16],        ;
+;               ;                           ; BHT[15][1], BHT[15][2], BHT[15][3], BHT[15][4], BHT[15][5], BHT[15][6], BHT[15][7], BHT[15][8],   ;
+;               ;                           ; BHT[15][9], BHT[15][10], BHT[15][11], BHT[15][12], BHT[15][13], BHT[15][14], BHT[15][15],         ;
+;               ;                           ; BHT[15][16], BHT[0][0], BHT[1][0], BHT[2][0], BHT[3][0], BHT[4][0], BHT[5][0], BHT[6][0],         ;
+;               ;                           ; BHT[8][0], BHT[9][0], BHT[12][0], pos[2], INDEX[0], INDEX[3], INDEX[2], INDEX[1], MRU[0], MRU[1], ;
+;               ;                           ; MRU[2], MRU[3], ID_RR_NPC[2], ID_RR_NPC[3], ID_RR_NPC[4], ID_RR_NPC[5], ID_RR_NPC[6],             ;
+;               ;                           ; ID_RR_NPC[7], ID_RR_NPC[8], ID_RR_NPC[9], ID_RR_NPC[10], ID_RR_NPC[11], ID_RR_NPC[12],            ;
+;               ;                           ; ID_RR_NPC[13], ID_RR_NPC[14], ID_RR_NPC[15], NPC[10], NPC[11], NPC[12], NPC[13], NPC[14],         ;
+;               ;                           ; NPC[15], EX_MEM_NPC[10], EX_MEM_NPC[11], EX_MEM_NPC[12], EX_MEM_NPC[13], EX_MEM_NPC[14],          ;
+;               ;                           ; EX_MEM_NPC[15]                                                                                    ;
+; IF_ID_IR[8]   ; Stuck at GND              ; Reg_rtl_1_bypass[6], ID_RR_IR[8], RR_EX_IR[8], EX_MEM_IR[8], MEM_WB_IR[8], WB_RB[2],              ;
+;               ; due to stuck port data_in ; WB_carry, WB_zero, MEM_WB_carry, MEM_WB_zero, EX_MEM_carry, EX_MEM_zero, MEM_WB_type[2],          ;
+;               ;                           ; MEM_WB_TAKEN_BRANCH, MEM_WB_type[1], MEM_WB_type[0], MEM_WB_type[3], MEM_WB_ALUOut[0],            ;
+;               ;                           ; MEM_WB_ALUOut[1], MEM_WB_ALUOut[2], MEM_WB_ALUOut[3], MEM_WB_ALUOut[4], MEM_WB_ALUOut[5],         ;
+;               ;                           ; HALTED, MEM_WB_IR[9], MEM_WB_IR[10], EX_MEM_B[0], EX_MEM_B[1], EX_MEM_B[2], EX_MEM_B[3],          ;
+;               ;                           ; EX_MEM_B[4], EX_MEM_ALUOut[0], EX_MEM_ALUOut[1], EX_MEM_ALUOut[2], EX_MEM_ALUOut[7],              ;
+;               ;                           ; EX_MEM_ALUOut[8], EX_MEM_ALUOut[9], EX_MEM_IR[2], EX_MEM_type.JUMP, EX_MEM_type.RR_ALU,           ;
+;               ;                           ; IF_ID_IR[12], IF_ID_IR[13], EX_MEM_IR[3], EX_MEM_IR[6], EX_MEM_IR[4], RR_EX_IR[15],               ;
+;               ;                           ; RR_EX_IR[14], RR_EX_IR[13], RR_EX_IR[12], ID_RR_IR[15], ID_RR_IR[14], ID_RR_IR[13], NPC[0],       ;
+;               ;                           ; NPC[4], NPC[5], NPC[6], NPC[7], NPC[8], RR_EX_B[8], NPC[9], RR_EX_B[9], RR_EX_NPC[0],             ;
+;               ;                           ; RR_EX_type.JUMP, RR_EX_IR[0], WB_RC[0], WB_RC[1], WB_RB[1], RR_EX_type.RR_ALU, RR_EX_NPC[1],      ;
+;               ;                           ; RR_EX_NPC[2], RR_EX_NPC[7], RR_EX_NPC[8], RR_EX_NPC[9], RR_EX_NPC[15], Reg_rtl_1_bypass[7],       ;
+;               ;                           ; Reg_rtl_1_bypass[0], Reg_rtl_1_bypass[1], Reg_rtl_1_bypass[2], Reg_rtl_1_bypass[3],               ;
+;               ;                           ; Reg_rtl_1_bypass[4], Reg_rtl_1_bypass[5], Reg_rtl_1_bypass[8], ID_RR_NPC[0],                      ;
+;               ;                           ; ID_RR_NPC[1], Reg_rtl_1_bypass[9], Reg_rtl_1_bypass[10], Reg_rtl_1_bypass[11],                    ;
+;               ;                           ; Reg_rtl_1_bypass[12], Reg_rtl_1_bypass[13], Reg_rtl_1_bypass[14], Reg_rtl_1_bypass[15],           ;
+;               ;                           ; Reg_rtl_1_bypass[16], IF_ID_IR[4], Reg_rtl_1_bypass[17], Reg_rtl_1_bypass[18],                    ;
+;               ;                           ; ID_RR_IR[5], IF_ID_IR[5], Reg_rtl_1_bypass[19], Reg_rtl_1_bypass[20],                             ;
+;               ;                           ; Reg_rtl_1_bypass[21], Reg_rtl_1_bypass[22], Reg_rtl_1_bypass[23], Reg_rtl_1_bypass[24],           ;
+;               ;                           ; Reg_rtl_1_bypass[25], Reg_rtl_1_bypass[26], Reg_rtl_1_bypass[27], Reg_rtl_1_bypass[28],           ;
+;               ;                           ; Reg_rtl_1_bypass[29], Reg_rtl_1_bypass[30], Reg_rtl_1_bypass[31], Reg_rtl_1_bypass[32],           ;
+;               ;                           ; Reg_rtl_1_bypass[33], Reg_rtl_1_bypass[34], Reg_rtl_1_bypass[35], Reg_rtl_1_bypass[36],           ;
+;               ;                           ; Reg_rtl_1_bypass[37], Reg_rtl_1_bypass[38], ID_RR_type.JUMP, ID_RR_type.RR_ALU,                   ;
+;               ;                           ; EX_MEM_NPC[0], EX_MEM_NPC[4], EX_MEM_NPC[5], EX_MEM_NPC[6], EX_MEM_NPC[7], EX_MEM_NPC[8],         ;
+;               ;                           ; EX_MEM_NPC[9]                                                                                     ;
+; IF_ID_IR[11]  ; Stuck at GND              ; ID_RR_IR[11], RR_EX_IR[11], EX_MEM_IR[11], MEM_WB_IR[11], WB_RA[2], MEM_WB_ALUOut[6],             ;
+;               ; due to stuck port data_in ; MEM_WB_ALUOut[7], MEM_WB_ALUOut[8], MEM_WB_ALUOut[9], MEM_WB_ALUOut[10],                          ;
+;               ;                           ; MEM_WB_ALUOut[11], MEM_WB_ALUOut[12], MEM_WB_ALUOut[13], MEM_WB_ALUOut[14],                       ;
+;               ;                           ; MEM_WB_ALUOut[15], MEM_WB_IR[6], MEM_WB_IR[5], EX_MEM_ALUOut[3], EX_MEM_ALUOut[4],                ;
+;               ;                           ; EX_MEM_ALUOut[5], EX_MEM_ALUOut[6], EX_MEM_TAKEN_BRANCH, EX_MEM_ALUOut[10],                       ;
+;               ;                           ; EX_MEM_ALUOut[11], EX_MEM_ALUOut[12], EX_MEM_ALUOut[13], EX_MEM_ALUOut[14],                       ;
+;               ;                           ; EX_MEM_ALUOut[15], EX_MEM_IR[9], EX_MEM_IR[10], EX_MEM_IR[5], RR_EX_B[0], RR_EX_B[1],             ;
+;               ;                           ; RR_EX_B[2], RR_EX_B[3], RR_EX_B[4], RR_EX_B[5], RR_EX_B[6], RR_EX_B[7], RR_EX_B[10],              ;
+;               ;                           ; RR_EX_B[11], RR_EX_B[12], RR_EX_B[13], RR_EX_B[14], RR_EX_B[15], RR_EX_IR[6],                     ;
+;               ;                           ; WB_TAKEN_BRANCH, WB_RC[2], WB_type[3], WB_type[2], WB_type[1], WB_type[0], WB_RB[0], WB_RA[0],    ;
+;               ;                           ; WB_RA[1], RR_EX_IR[9], RR_EX_IR[10], WB_ALUOut[0], WB_LMD[0], WB_ALUOut[1], WB_LMD[1],            ;
+;               ;                           ; WB_ALUOut[2], WB_LMD[2], RR_EX_NPC[3], WB_ALUOut[3], WB_LMD[3], RR_EX_NPC[4], WB_ALUOut[4],       ;
+;               ;                           ; WB_LMD[4], RR_EX_NPC[5], WB_ALUOut[5], WB_LMD[5], RR_EX_NPC[6], WB_ALUOut[6], WB_LMD[6],          ;
+;               ;                           ; WB_ALUOut[7], WB_LMD[7], WB_ALUOut[8], WB_LMD[8], WB_ALUOut[9], WB_LMD[9],                        ;
+;               ;                           ; RR_EX_TAKEN_BRANCH, RR_EX_NPC[10], RR_EX_IR[3], WB_ALUOut[10], WB_LMD[10], RR_EX_NPC[11],         ;
+;               ;                           ; RR_EX_IR[4], WB_ALUOut[11], WB_LMD[11], RR_EX_NPC[12], RR_EX_IR[5], WB_ALUOut[12],                ;
+;               ;                           ; WB_LMD[12], RR_EX_NPC[13], WB_ALUOut[13], WB_LMD[13], RR_EX_NPC[14], WB_ALUOut[14],               ;
+;               ;                           ; WB_LMD[14], WB_ALUOut[15], WB_LMD[15], ID_RR_IR[6], ID_RR_TAKEN_BRANCH                            ;
+; IF_ID_IR[6]   ; Lost Fanouts              ; EX_MEM_IR[15], EX_MEM_IR[14], EX_MEM_IR[13], EX_MEM_IR[12], EX_MEM_cond, NPC[1], NPC[2],          ;
+;               ;                           ; NPC[3], ID_RR_IR[1], ID_RR_IR[3], IF_ID_IR[3], ID_RR_IR[4], EX_MEM_NPC[1], EX_MEM_NPC[2],         ;
+;               ;                           ; EX_MEM_NPC[3]                                                                                     ;
+; EX_MEM_type~7 ; Lost Fanouts              ; EX_MEM_type.RI_L, EX_MEM_type.LM_T, EX_MEM_type.BRANCH, EX_MEM_type.RI_ALU_A,                     ;
+;               ;                           ; RR_EX_type.RI_L, RR_EX_type.BRANCH, RR_EX_type.RI_ALU_A, RR_EX_type.LM_T                          ;
+; EX_MEM_type~8 ; Lost Fanouts              ; EX_MEM_type.SM_T, EX_MEM_type.RI_ALU_L, RR_EX_type.SM_T, RR_EX_type.RI_ALU_L                      ;
+; RR_EX_type~11 ; Lost Fanouts              ; ID_RR_type.RI_L, ID_RR_type.BRANCH, ID_RR_type.RI_ALU_A, ID_RR_type.LM_T                          ;
+; ID_RR_type~2  ; Lost Fanouts              ; IF_ID_IR[14], IF_ID_IR[15], ID_RR_IR[12]                                                          ;
+; EX_MEM_type~9 ; Lost Fanouts              ; EX_MEM_type.RI_S, RR_EX_type.RI_S                                                                 ;
+; RR_EX_type~12 ; Lost Fanouts              ; ID_RR_type.SM_T, ID_RR_type.RI_ALU_L                                                              ;
+; RR_EX_type~13 ; Lost Fanouts              ; ID_RR_type.RI_S                                                                                   ;
+; ID_RR_IR[9]   ; Lost Fanouts              ; IF_ID_IR[9]                                                                                       ;
+; ID_RR_IR[10]  ; Lost Fanouts              ; IF_ID_IR[10]                                                                                      ;
++---------------+---------------------------+---------------------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 0     ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------+
+; Registers Packed Into Inferred Megafunctions ;
++-------------------+--------------+-----------+
+; Register Name     ; Megafunction ; Type      ;
++-------------------+--------------+-----------+
+; RR_EX_A[0..15]    ; Reg_rtl_0    ; RAM       ;
+; MEM_WB_LMD[0..15] ; dMem_rtl_0   ; RAM       ;
++-------------------+--------------+-----------+
+
+
++--------------------------------------------+
+; Registers Added for RAM Pass-Through Logic ;
++----------------------+---------------------+
+; Register Name        ; RAM Name            ;
++----------------------+---------------------+
+; Reg_rtl_1_bypass[0]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[1]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[2]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[3]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[4]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[5]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[6]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[7]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[8]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[9]  ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[10] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[11] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[12] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[13] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[14] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[15] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[16] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[17] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[18] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[19] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[20] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[21] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[22] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[23] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[24] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[25] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[26] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[27] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[28] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[29] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[30] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[31] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[32] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[33] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[34] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[35] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[36] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[37] ; Reg_rtl_1           ;
+; Reg_rtl_1_bypass[38] ; Reg_rtl_1           ;
++----------------------+---------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output     ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; Yes        ; |IITB_RISCBP|INDEX[3]          ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |IITB_RISCBP|MRU[3]            ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 0 LEs                ; 8 LEs                  ; Yes        ; |IITB_RISCBP|pos[3]            ;
+; 4:1                ; 16 bits   ; 32 LEs        ; 0 LEs                ; 32 LEs                 ; Yes        ; |IITB_RISCBP|NPC[6]            ;
+; 101:1              ; 8 bits    ; 536 LEs       ; 208 LEs              ; 328 LEs                ; Yes        ; |IITB_RISCBP|EX_MEM_ALUOut[15] ;
+; 101:1              ; 8 bits    ; 536 LEs       ; 208 LEs              ; 328 LEs                ; Yes        ; |IITB_RISCBP|EX_MEM_ALUOut[9]  ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; No         ; |IITB_RISCBP|Mux12             ;
+; 8:1                ; 2 bits    ; 10 LEs        ; 4 LEs                ; 6 LEs                  ; No         ; |IITB_RISCBP|ID_RR_type        ;
+; 5:1                ; 6 bits    ; 18 LEs        ; 18 LEs               ; 0 LEs                  ; No         ; |IITB_RISCBP|Add0              ;
+; 5:1                ; 16 bits   ; 48 LEs        ; 32 LEs               ; 16 LEs                 ; No         ; |IITB_RISCBP|Add0              ;
+; 13:1               ; 7 bits    ; 56 LEs        ; 42 LEs               ; 14 LEs                 ; No         ; |IITB_RISCBP|ID_RR_type        ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; No         ; |IITB_RISCBP|iMem.raddr_a[1]   ;
+; 17:1               ; 4 bits    ; 44 LEs        ; 44 LEs               ; 0 LEs                  ; No         ; |IITB_RISCBP|pos               ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
+
+
++----------------------------------------------------------------------------+
+; Source assignments for altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated ;
++---------------------------------+--------------------+------+--------------+
+; Assignment                      ; Value              ; From ; To           ;
++---------------------------------+--------------------+------+--------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -            ;
++---------------------------------+--------------------+------+--------------+
+
+
++----------------------------------------------------------------------------+
+; Source assignments for altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated ;
++---------------------------------+--------------------+------+--------------+
+; Assignment                      ; Value              ; From ; To           ;
++---------------------------------+--------------------+------+--------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -            ;
++---------------------------------+--------------------+------+--------------+
+
+
++-----------------------------------------------------------------------------+
+; Source assignments for altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated ;
++---------------------------------+--------------------+------+---------------+
+; Assignment                      ; Value              ; From ; To            ;
++---------------------------------+--------------------+------+---------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -             ;
++---------------------------------+--------------------+------+---------------+
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |IITB_RISCBP ;
++----------------+------------------+-----------------------------------------+
+; Parameter Name ; Value            ; Type                                    ;
++----------------+------------------+-----------------------------------------+
+; RR_ALU         ; 0000             ; Unsigned Binary                         ;
+; RI_ALU_A       ; 0001             ; Unsigned Binary                         ;
+; RI_ALU_L       ; 0010             ; Unsigned Binary                         ;
+; RI_L           ; 0011             ; Unsigned Binary                         ;
+; RI_S           ; 0100             ; Unsigned Binary                         ;
+; LM_T           ; 0101             ; Unsigned Binary                         ;
+; SM_T           ; 0110             ; Unsigned Binary                         ;
+; BRANCH         ; 0111             ; Unsigned Binary                         ;
+; JUMP           ; 1000             ; Unsigned Binary                         ;
+; ADD            ; 0000             ; Unsigned Binary                         ;
+; ADI            ; 0001             ; Unsigned Binary                         ;
+; NDU            ; 0010             ; Unsigned Binary                         ;
+; LHI            ; 0011             ; Unsigned Binary                         ;
+; LW             ; 0100             ; Unsigned Binary                         ;
+; SW             ; 0101             ; Unsigned Binary                         ;
+; LM             ; 0110             ; Unsigned Binary                         ;
+; SM             ; 0111             ; Unsigned Binary                         ;
+; BEQ            ; 1100             ; Unsigned Binary                         ;
+; JAL            ; 1000             ; Unsigned Binary                         ;
+; JLR            ; 1001             ; Unsigned Binary                         ;
+; HLT            ; 1010             ; Unsigned Binary                         ;
+; NOP            ; 1111             ; Unsigned Binary                         ;
+; HALT           ; 1010000000000000 ; Unsigned Binary                         ;
++----------------+------------------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: altsyncram:Reg_rtl_0                                ;
++------------------------------------+------------------------------------------------+----------------+
+; Parameter Name                     ; Value                                          ; Type           ;
++------------------------------------+------------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                              ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                             ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                            ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                             ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                            ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                              ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                                      ; Untyped        ;
+; WIDTH_A                            ; 16                                             ; Untyped        ;
+; WIDTHAD_A                          ; 3                                              ; Untyped        ;
+; NUMWORDS_A                         ; 8                                              ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                   ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                           ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                           ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                           ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                           ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                           ; Untyped        ;
+; WIDTH_B                            ; 16                                             ; Untyped        ;
+; WIDTHAD_B                          ; 3                                              ; Untyped        ;
+; NUMWORDS_B                         ; 8                                              ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                         ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                         ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK0                                         ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                                         ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                   ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                         ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                           ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                           ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                           ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                           ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                           ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                           ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                              ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                              ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                           ; Untyped        ;
+; BYTE_SIZE                          ; 8                                              ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                       ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                           ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                           ; Untyped        ;
+; INIT_FILE                          ; db/IITB_RISC.ram0_IITB_RISCBP_29f3f2c6.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                         ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                              ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                          ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                          ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                              ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                                      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_c4v1                                ; Untyped        ;
++------------------------------------+------------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: altsyncram:Reg_rtl_1                                ;
++------------------------------------+------------------------------------------------+----------------+
+; Parameter Name                     ; Value                                          ; Type           ;
++------------------------------------+------------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                              ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                             ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                            ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                             ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                            ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                              ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                                      ; Untyped        ;
+; WIDTH_A                            ; 16                                             ; Untyped        ;
+; WIDTHAD_A                          ; 3                                              ; Untyped        ;
+; NUMWORDS_A                         ; 8                                              ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                   ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                           ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                           ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                           ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                           ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                           ; Untyped        ;
+; WIDTH_B                            ; 16                                             ; Untyped        ;
+; WIDTHAD_B                          ; 3                                              ; Untyped        ;
+; NUMWORDS_B                         ; 8                                              ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                         ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                         ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK1                                         ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                                         ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                   ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                         ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                           ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                           ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                           ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                           ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                           ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                           ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                              ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                              ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                           ; Untyped        ;
+; BYTE_SIZE                          ; 8                                              ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                       ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                           ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                           ; Untyped        ;
+; INIT_FILE                          ; db/IITB_RISC.ram0_IITB_RISCBP_29f3f2c6.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                         ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                              ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                          ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                          ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                              ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                                      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_nmt1                                ; Untyped        ;
++------------------------------------+------------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: altsyncram:dMem_rtl_0                               ;
++------------------------------------+------------------------------------------------+----------------+
+; Parameter Name                     ; Value                                          ; Type           ;
++------------------------------------+------------------------------------------------+----------------+
+; BYTE_SIZE_BLOCK                    ; 8                                              ; Untyped        ;
+; AUTO_CARRY_CHAINS                  ; ON                                             ; AUTO_CARRY     ;
+; IGNORE_CARRY_BUFFERS               ; OFF                                            ; IGNORE_CARRY   ;
+; AUTO_CASCADE_CHAINS                ; ON                                             ; AUTO_CASCADE   ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                                            ; IGNORE_CASCADE ;
+; WIDTH_BYTEENA                      ; 1                                              ; Untyped        ;
+; OPERATION_MODE                     ; DUAL_PORT                                      ; Untyped        ;
+; WIDTH_A                            ; 16                                             ; Untyped        ;
+; WIDTHAD_A                          ; 10                                             ; Untyped        ;
+; NUMWORDS_A                         ; 1024                                           ; Untyped        ;
+; OUTDATA_REG_A                      ; UNREGISTERED                                   ; Untyped        ;
+; ADDRESS_ACLR_A                     ; NONE                                           ; Untyped        ;
+; OUTDATA_ACLR_A                     ; NONE                                           ; Untyped        ;
+; WRCONTROL_ACLR_A                   ; NONE                                           ; Untyped        ;
+; INDATA_ACLR_A                      ; NONE                                           ; Untyped        ;
+; BYTEENA_ACLR_A                     ; NONE                                           ; Untyped        ;
+; WIDTH_B                            ; 16                                             ; Untyped        ;
+; WIDTHAD_B                          ; 10                                             ; Untyped        ;
+; NUMWORDS_B                         ; 1024                                           ; Untyped        ;
+; INDATA_REG_B                       ; CLOCK1                                         ; Untyped        ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1                                         ; Untyped        ;
+; RDCONTROL_REG_B                    ; CLOCK0                                         ; Untyped        ;
+; ADDRESS_REG_B                      ; CLOCK0                                         ; Untyped        ;
+; OUTDATA_REG_B                      ; UNREGISTERED                                   ; Untyped        ;
+; BYTEENA_REG_B                      ; CLOCK1                                         ; Untyped        ;
+; INDATA_ACLR_B                      ; NONE                                           ; Untyped        ;
+; WRCONTROL_ACLR_B                   ; NONE                                           ; Untyped        ;
+; ADDRESS_ACLR_B                     ; NONE                                           ; Untyped        ;
+; OUTDATA_ACLR_B                     ; NONE                                           ; Untyped        ;
+; RDCONTROL_ACLR_B                   ; NONE                                           ; Untyped        ;
+; BYTEENA_ACLR_B                     ; NONE                                           ; Untyped        ;
+; WIDTH_BYTEENA_A                    ; 1                                              ; Untyped        ;
+; WIDTH_BYTEENA_B                    ; 1                                              ; Untyped        ;
+; RAM_BLOCK_TYPE                     ; AUTO                                           ; Untyped        ;
+; BYTE_SIZE                          ; 8                                              ; Untyped        ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA                                       ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ                           ; Untyped        ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ                           ; Untyped        ;
+; INIT_FILE                          ; db/IITB_RISC.ram1_IITB_RISCBP_29f3f2c6.hdl.mif ; Untyped        ;
+; INIT_FILE_LAYOUT                   ; PORT_A                                         ; Untyped        ;
+; MAXIMUM_DEPTH                      ; 0                                              ; Untyped        ;
+; CLOCK_ENABLE_INPUT_A               ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_A              ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL                                         ; Untyped        ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN                                ; Untyped        ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN                                ; Untyped        ;
+; ENABLE_ECC                         ; FALSE                                          ; Untyped        ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                                          ; Untyped        ;
+; WIDTH_ECCSTATUS                    ; 3                                              ; Untyped        ;
+; DEVICE_FAMILY                      ; Cyclone V                                      ; Untyped        ;
+; CBXI_PARAMETER                     ; altsyncram_7gv1                                ; Untyped        ;
++------------------------------------+------------------------------------------------+----------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                  ;
++-------------------------------------------+-----------------------+
+; Name                                      ; Value                 ;
++-------------------------------------------+-----------------------+
+; Number of entity instances                ; 3                     ;
+; Entity Instance                           ; altsyncram:Reg_rtl_0  ;
+;     -- OPERATION_MODE                     ; DUAL_PORT             ;
+;     -- WIDTH_A                            ; 16                    ;
+;     -- NUMWORDS_A                         ; 8                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED          ;
+;     -- WIDTH_B                            ; 16                    ;
+;     -- NUMWORDS_B                         ; 8                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA              ;
+; Entity Instance                           ; altsyncram:Reg_rtl_1  ;
+;     -- OPERATION_MODE                     ; DUAL_PORT             ;
+;     -- WIDTH_A                            ; 16                    ;
+;     -- NUMWORDS_A                         ; 8                     ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED          ;
+;     -- WIDTH_B                            ; 16                    ;
+;     -- NUMWORDS_B                         ; 8                     ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA              ;
+; Entity Instance                           ; altsyncram:dMem_rtl_0 ;
+;     -- OPERATION_MODE                     ; DUAL_PORT             ;
+;     -- WIDTH_A                            ; 16                    ;
+;     -- NUMWORDS_A                         ; 1024                  ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED          ;
+;     -- WIDTH_B                            ; 16                    ;
+;     -- NUMWORDS_B                         ; 1024                  ;
+;     -- ADDRESS_REG_B                      ; CLOCK0                ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED          ;
+;     -- RAM_BLOCK_TYPE                     ; AUTO                  ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; OLD_DATA              ;
++-------------------------------------------+-----------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-------------------+---------------------------------+
+; Type              ; Count                           ;
++-------------------+---------------------------------+
+; boundary_port     ; 2                               ;
+;                   ;                                 ;
+; Max LUT depth     ; 0.00                            ;
+; Average LUT depth ; 0.00                            ;
++-------------------+---------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:07     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Processing started: Mon Aug 16 22:24:01 2021
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off IITB_RISC -c IITB_RISC
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 8 of the 8 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file iitb_risc.v
+    Info (12023): Found entity 1: IITB_RISC File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISC.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file iitb_riscbp.v
+    Info (12023): Found entity 1: IITB_RISCBP File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 1
+Info (12127): Elaborating entity "IITB_RISCBP" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISCBP.v(10): object "Ex_MEM_Imm" assigned a value but never read File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 10
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISCBP.v(16): object "RR_EX_H" assigned a value but never read File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 16
+Warning (10858): Verilog HDL warning at IITB_RISCBP.v(16): object EX_MEM_H used but never assigned File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 16
+Warning (10036): Verilog HDL or VHDL warning at IITB_RISCBP.v(22): object "itsthatcase" assigned a value but never read File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 22
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(47): truncated value with size 17 to match size of target (1) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 47
+Warning (10855): Verilog HDL warning at IITB_RISCBP.v(44): initial value for variable BHT should be constant File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 44
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(204): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 204
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(212): truncated value with size 32 to match size of target (16) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 212
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(224): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 224
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(231): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 231
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(234): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 234
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(238): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 238
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(239): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 239
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(242): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 242
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(248): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 248
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(249): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 249
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(250): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 250
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(256): truncated value with size 32 to match size of target (16) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 256
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(314): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 314
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(327): truncated value with size 32 to match size of target (16) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 327
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(339): truncated value with size 32 to match size of target (16) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 339
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(352): truncated value with size 32 to match size of target (16) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 352
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(357): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 357
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(360): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 360
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(364): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 364
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(365): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 365
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(368): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 368
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(374): truncated value with size 33 to match size of target (17) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 374
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(375): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 375
+Warning (10230): Verilog HDL assignment warning at IITB_RISCBP.v(376): truncated value with size 32 to match size of target (4) File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 376
+Info (10264): Verilog HDL Case Statement information at IITB_RISCBP.v(495): all case item expressions in this case statement are onehot File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 495
+Info (10264): Verilog HDL Case Statement information at IITB_RISCBP.v(847): all case item expressions in this case statement are onehot File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 847
+Warning (10199): Verilog HDL Case Statement warning at IITB_RISCBP.v(877): case item expression never matches the case expression File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 877
+Warning (10030): Net "iMem.data_a" at IITB_RISCBP.v(19) has no driver or initial value, using a default initial value '0' File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 19
+Warning (10030): Net "iMem.waddr_a" at IITB_RISCBP.v(19) has no driver or initial value, using a default initial value '0' File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 19
+Warning (10030): Net "EX_MEM_H" at IITB_RISCBP.v(16) has no driver or initial value, using a default initial value '0' File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 16
+Warning (10030): Net "iMem.we_a" at IITB_RISCBP.v(19) has no driver or initial value, using a default initial value '0' File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 19
+Warning (276020): Inferred RAM node "Reg_rtl_1" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276007): RAM logic "iMem" is uninferred due to asynchronous read logic File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 19
+Warning (127007): Memory Initialization File or Hexadecimal (Intel-Format) File "D:/IITB Files/Placement/selfprojects/IITB_RISC/db/IITB_RISC.ram2_IITB_RISCBP_29f3f2c6.hdl.mif" contains "don't care" values -- overwriting them with 0s
+Info (19000): Inferred 3 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Reg_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 3
+        Info (286033): Parameter NUMWORDS_A set to 8
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 3
+        Info (286033): Parameter NUMWORDS_B set to 8
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/IITB_RISC.ram0_IITB_RISCBP_29f3f2c6.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+        Info (286033): Parameter RDCONTROL_REG_B set to CLOCK0
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "Reg_rtl_1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 3
+        Info (286033): Parameter NUMWORDS_A set to 8
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 3
+        Info (286033): Parameter NUMWORDS_B set to 8
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/IITB_RISC.ram0_IITB_RISCBP_29f3f2c6.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "dMem_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 16
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 16
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter INIT_FILE set to db/IITB_RISC.ram1_IITB_RISCBP_29f3f2c6.hdl.mif
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+        Info (286033): Parameter RDCONTROL_REG_B set to CLOCK0
+Info (12130): Elaborated megafunction instantiation "altsyncram:Reg_rtl_0"
+Info (12133): Instantiated megafunction "altsyncram:Reg_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "3"
+    Info (12134): Parameter "NUMWORDS_A" = "8"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "3"
+    Info (12134): Parameter "NUMWORDS_B" = "8"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/IITB_RISC.ram0_IITB_RISCBP_29f3f2c6.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+    Info (12134): Parameter "RDCONTROL_REG_B" = "CLOCK0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_c4v1.tdf
+    Info (12023): Found entity 1: altsyncram_c4v1 File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "altsyncram:Reg_rtl_1"
+Info (12133): Instantiated megafunction "altsyncram:Reg_rtl_1" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "3"
+    Info (12134): Parameter "NUMWORDS_A" = "8"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "3"
+    Info (12134): Parameter "NUMWORDS_B" = "8"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/IITB_RISC.ram0_IITB_RISCBP_29f3f2c6.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_nmt1.tdf
+    Info (12023): Found entity 1: altsyncram_nmt1 File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "altsyncram:dMem_rtl_0"
+Info (12133): Instantiated megafunction "altsyncram:dMem_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "16"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "16"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "INIT_FILE" = "db/IITB_RISC.ram1_IITB_RISCBP_29f3f2c6.hdl.mif"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+    Info (12134): Parameter "RDCONTROL_REG_B" = "CLOCK0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_7gv1.tdf
+    Info (12023): Found entity 1: altsyncram_7gv1 File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 27
+Warning (14284): Synthesized away the following node(s):
+    Warning (14285): Synthesized away the following RAM node(s):
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a0" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 38
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a1" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 68
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a2" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 98
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a3" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 128
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a4" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 158
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a5" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 188
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a6" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 218
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a7" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 248
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a8" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 278
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a9" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 308
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a10" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 338
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a11" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 368
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a12" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 398
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a13" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 428
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a14" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 458
+        Warning (14320): Synthesized away node "altsyncram:dMem_rtl_0|altsyncram_7gv1:auto_generated|ram_block1a15" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_7gv1.tdf Line: 488
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a0" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 38
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a1" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 68
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a2" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 98
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a3" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 128
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a4" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 158
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a5" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 188
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a6" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 218
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a7" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 248
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a8" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 278
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a9" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 308
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a10" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 338
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a11" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 368
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a12" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 398
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a13" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 428
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a14" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 458
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_1|altsyncram_nmt1:auto_generated|ram_block1a15" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_nmt1.tdf Line: 488
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a0" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 38
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a1" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 68
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a2" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 98
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a3" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 128
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a4" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 158
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a5" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 188
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a6" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 218
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a7" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 248
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a8" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 278
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a9" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 308
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a10" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 338
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a11" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 368
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a12" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 398
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a13" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 428
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a14" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 458
+        Warning (14320): Synthesized away node "altsyncram:Reg_rtl_0|altsyncram_c4v1:auto_generated|ram_block1a15" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/db/altsyncram_c4v1.tdf Line: 488
+Info (17049): 597 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file D:/IITB Files/Placement/selfprojects/IITB_RISC/output_files/IITB_RISC.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "rst" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 3
+    Warning (15610): No output dependent on input pin "clk1" File: D:/IITB Files/Placement/selfprojects/IITB_RISC/IITB_RISCBP.v Line: 3
+Info (21057): Implemented 2 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 0 output pins
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 91 warnings
+    Info: Peak virtual memory: 4838 megabytes
+    Info: Processing ended: Mon Aug 16 22:24:25 2021
+    Info: Elapsed time: 00:00:24
+    Info: Total CPU time (on all processors): 00:00:42
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/IITB Files/Placement/selfprojects/IITB_RISC/output_files/IITB_RISC.map.smsg.
+
+

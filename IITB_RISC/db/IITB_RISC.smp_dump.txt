@@ -1,0 +1,36 @@
+
+State Machine - |IITB_RISCBP|EX_MEM_type
+Name EX_MEM_type.BRANCH EX_MEM_type.SM_T EX_MEM_type.LM_T EX_MEM_type.RI_S EX_MEM_type.RI_L EX_MEM_type.RI_ALU_L EX_MEM_type.RI_ALU_A EX_MEM_type.RR_ALU EX_MEM_type.JUMP 
+EX_MEM_type.RR_ALU 0 0 0 0 0 0 0 0 0 
+EX_MEM_type.RI_ALU_A 0 0 0 0 0 0 1 1 0 
+EX_MEM_type.RI_ALU_L 0 0 0 0 0 1 0 1 0 
+EX_MEM_type.RI_L 0 0 0 0 1 0 0 1 0 
+EX_MEM_type.RI_S 0 0 0 1 0 0 0 1 0 
+EX_MEM_type.LM_T 0 0 1 0 0 0 0 1 0 
+EX_MEM_type.SM_T 0 1 0 0 0 0 0 1 0 
+EX_MEM_type.BRANCH 1 0 0 0 0 0 0 1 0 
+EX_MEM_type.JUMP 0 0 0 0 0 0 0 1 1 
+
+State Machine - |IITB_RISCBP|RR_EX_type
+Name RR_EX_type.BRANCH RR_EX_type.SM_T RR_EX_type.LM_T RR_EX_type.RI_S RR_EX_type.RI_L RR_EX_type.RI_ALU_L RR_EX_type.RI_ALU_A RR_EX_type.RR_ALU RR_EX_type.JUMP 
+RR_EX_type.RR_ALU 0 0 0 0 0 0 0 0 0 
+RR_EX_type.RI_ALU_A 0 0 0 0 0 0 1 1 0 
+RR_EX_type.RI_ALU_L 0 0 0 0 0 1 0 1 0 
+RR_EX_type.RI_L 0 0 0 0 1 0 0 1 0 
+RR_EX_type.RI_S 0 0 0 1 0 0 0 1 0 
+RR_EX_type.LM_T 0 0 1 0 0 0 0 1 0 
+RR_EX_type.SM_T 0 1 0 0 0 0 0 1 0 
+RR_EX_type.BRANCH 1 0 0 0 0 0 0 1 0 
+RR_EX_type.JUMP 0 0 0 0 0 0 0 1 1 
+
+State Machine - |IITB_RISCBP|ID_RR_type
+Name ID_RR_type.BRANCH ID_RR_type.SM_T ID_RR_type.LM_T ID_RR_type.RI_S ID_RR_type.RI_L ID_RR_type.RI_ALU_L ID_RR_type.RI_ALU_A ID_RR_type.RR_ALU ID_RR_type.JUMP 
+ID_RR_type.RR_ALU 0 0 0 0 0 0 0 0 0 
+ID_RR_type.RI_ALU_A 0 0 0 0 0 0 1 1 0 
+ID_RR_type.RI_ALU_L 0 0 0 0 0 1 0 1 0 
+ID_RR_type.RI_L 0 0 0 0 1 0 0 1 0 
+ID_RR_type.RI_S 0 0 0 1 0 0 0 1 0 
+ID_RR_type.LM_T 0 0 1 0 0 0 0 1 0 
+ID_RR_type.SM_T 0 1 0 0 0 0 0 1 0 
+ID_RR_type.BRANCH 1 0 0 0 0 0 0 1 0 
+ID_RR_type.JUMP 0 0 0 0 0 0 0 1 1 
